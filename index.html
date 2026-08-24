@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【公式】パーソナル顔診断＆ファッション提案 | Bloom Style</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rose: {
+                            50: '#fdf2f4',
+                            100: '#fde8eb',
+                            200: '#fbd0d7',
+                            300: '#f7aab8',
+                            400: '#f27993',
+                            500: '#e6496f',
+                            600: '#d12952',
+                        },
+                        sand: {
+                            50: '#fbf9f6',
+                            100: '#f5f0e8',
+                            200: '#ebdccb',
+                            300: '#dec4a8',
+                            800: '#5c4836',
+                            900: '#382a1d',
+                        },
+                        champagne: '#f7f0e6',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fbf9f6;
+            color: #382a1d;
+        }
+        .serif-title {
+            font-family: 'Cormorant Garamond', 'Noto Sans JP', serif;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(#e6496f 0.5px, transparent 0.5px), radial-gradient(#e6496f 0.5px, #fbf9f6 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0,10px 10px;
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-rose-200">
+
+    <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-40 border-b border-sand-200">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2">
+                <span class="text-2xl font-serif font-bold text-rose-500 tracking-wider">Bloom Style</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-sand-800">
+                <a href="#features" class="hover:text-rose-500 transition">魅力・特徴</a>
+                <a href="#menu" class="hover:text-rose-500 transition">診断メニュー</a>
+                <a href="#flow" class="hover:text-rose-500 transition">診断の流れ</a>
+                <a href="#reviews" class="hover:text-rose-500 transition">お客様の声</a>
+                <a href="#faq" class="hover:text-rose-500 transition">FAQ</a>
+            </nav>
+            <a href="#apply" class="bg-rose-500 hover:bg-rose-600 text-white text-sm font-bold py-2.5 px-5 rounded-full shadow-md hover:shadow-lg transition flex items-center gap-1.5">
+                <span>診断を申し込む</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <section class="relative overflow-hidden pt-12 pb-20 md:py-28 bg-gradient-to-b from-rose-50 via-sand-50 to-white">
+            <div class="absolute inset-0 bg-pattern pointer-events-none"></div>
+            <div class="max-w-6xl mx-auto px-4 relative z-10">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-100 border border-rose-200 text-rose-600 text-xs md:text-sm font-medium">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            <span>累計500名以上の魅力を開花させた診断アドバイザー</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-sand-900">
+                            「本当に似合う」を知って、<br>
+                            <span class="text-rose-500 bg-gradient-to-r from-rose-500 to-rose-400 bg-clip-text text-transparent">いちばん垢抜けた私</span>へ。
+                        </h1>
+                        <p class="text-sand-800 text-sm sm:text-base leading-relaxed">
+                            顔タイプ診断・パーソナルファッション提案で、毎日の服選びやメイクの悩みをゼロに。<br class="hidden sm:inline">
+                            あなたの魅力を最大限に引き出す、一生モノの「特別診断カルテ」をお届けします。
+                        </p>
+
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                            <a href="#apply" class="w-full sm:w-auto bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 px-8 rounded-full shadow-lg shadow-rose-200 hover:shadow-xl transition transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
+                                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                                <span>今すぐ診断を申し込む</span>
+                            </a>
+                            <a href="#menu" class="w-full sm:w-auto bg-white border border-sand-300 hover:bg-sand-50 text-sand-800 font-medium py-4 px-6 rounded-full transition text-center flex items-center justify-center gap-1">
+                                <span>メニューを見る</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+
+                        <!-- 信頼アイコン -->
+                        <div class="pt-6 grid grid-cols-3 gap-2 border-t border-sand-200 text-center">
+                            <div>
+                                <p class="text-xs text-sand-800">診断実績</p>
+                                <p class="text-lg font-bold text-rose-500">500名+</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-sand-800">カルテ満足度</p>
+                                <p class="text-lg font-bold text-rose-500">98.4%</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-sand-800">オンライン完結</p>
+                                <p class="text-lg font-bold text-rose-500">全国対応</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- メインイメージビジュアル -->
+                    <div class="relative">
+                        <div class="relative mx-auto max-w-md bg-white p-3 rounded-3xl shadow-2xl border border-rose-100">
+                            <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-rose-50">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="モデルイメージ" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4 p-4 bg-white/90 backdrop-blur-md rounded-xl border border-white/50 text-sand-900 shadow-md">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 font-bold shrink-0">
+                                            <i data-lucide="file-text" class="w-5 h-5"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-semibold text-rose-600">自分だけの特別カルテ</p>
+                                            <p class="text-sm font-bold">写真・似合うメイク・服の教科書を納品</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white border-y border-sand-100">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <span class="text-rose-500 font-serif text-lg tracking-widest uppercase">Trouble Check</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold mt-1">こんなお悩み、ありませんか？</h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-rose-400 shrink-0 mt-0.5"></i>
+                        <p class="text-sand-800 text-sm leading-relaxed">洋服を買っても、なぜかしっくりこなくて結局着なくなってしまう。</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-rose-400 shrink-0 mt-0.5"></i>
+                        <p class="text-sand-800 text-sm leading-relaxed">クローゼットには服がいっぱいなのに「今日着る服がない」と毎日悩む。</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-rose-400 shrink-0 mt-0.5"></i>
+                        <p class="text-sand-800 text-sm leading-relaxed">入学式・卒園式・婚活・オフィスで失敗しない好印象コーデを知りたい。</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-rose-400 shrink-0 mt-0.5"></i>
+                        <p class="text-sand-800 text-sm leading-relaxed">自分に似合うメイクや髪型がわからず、ずっと同じメイクを続けている。</p>
+                    </div>
+                </div>
+
+                <div class="mt-10 p-6 rounded-2xl bg-rose-50 border border-rose-200 text-center">
+                    <p class="text-rose-600 font-bold text-lg sm:text-xl">
+                        それ、あなたの顔タイプ・雰囲気に合っていないのが原因かも！
+                    </p>
+                    <p class="text-sand-800 text-sm mt-2">
+                        顔診断で自身の魅力を正しく把握すれば、無駄な買い物が減り、自信を持って垢抜けることができます。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="py-20 bg-sand-50">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <span class="text-rose-500 font-serif text-lg tracking-widest uppercase">Diagnostic Menu</span>
+                    <h2 class="text-3xl font-bold mt-1">選べる2つの診断・提案プラン</h2>
+                    <p class="text-sand-800 text-sm mt-3">あなたの目的に合わせて最適なアドバイスを提供いたします。</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- プラン1：顔診断 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition border border-sand-200 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-rose-100 text-rose-600 font-bold text-xs px-4 py-1.5 rounded-bl-xl">
+                            1番人気
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-rose-100 flex items-center justify-center text-rose-500 mb-6">
+                                <i data-lucide="smile" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-sand-900">顔診断＆メイクカルテコース</h3>
+                            <p class="text-xs text-rose-500 font-semibold mt-1">〜なりたい印象＆似合う魅力を徹底解剖〜</p>
+                            
+                            <div class="my-6">
+                                <span class="text-3xl font-bold text-sand-900">¥12,800</span>
+                                <span class="text-xs text-sand-800">（税込）</span>
+                            </div>
+
+                            <ul class="space-y-3 text-sm text-sand-800 mb-8">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-rose-500 shrink-0 mt-1"></i>
+                                    <span>顔タイプ精密分析（骨格・パーツバランス）</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-rose-500 shrink-0 mt-1"></i>
+                                    <span>似合うメイクポイント・コスメ色選びガイド</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-rose-500 shrink-0 mt-1"></i>
+                                    <span>似合う髪型・メガネ・アクセサリーの提案</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-rose-500 shrink-0 mt-1"></i>
+                                    <span>**PDF顔診断カルテ（全10P以上）**を納品</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <a href="#apply" onclick="selectMenu('face')" class="w-full bg-sand-900 hover:bg-sand-800 text-white text-center font-bold py-3.5 px-4 rounded-xl transition block">
+                            このコースで申し込む
+                        </a>
+                    </div>
+
+                    <!-- プラン2：パーソナルファッション提案 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition border border-sand-200 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-sand-100 flex items-center justify-center text-sand-800 mb-6">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-sand-900">パーソナルファッション提案</h3>
+                            <p class="text-xs text-rose-500 font-semibold mt-1">〜イベント・日常シーン別 コーディネート提案〜</p>
+
+                            <div class="my-6">
+                                <span class="text-3xl font-bold text-sand-900">¥15,800</span>
+                                <span class="text-xs text-sand-800">（税込）</span>
+                            </div>
+
+                            <ul class="space-y-3 text-sm text-sand-800 mb-8">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-rose-500 shrink-0 mt-1"></i>
+                                    <span>特定のイベント（入学式/卒園式/婚活/日常など）対応</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-rose-500 shrink-0 mt-1"></i>
+                                    <span>通販等で今すぐ買えるおすすめアイテムURL付き</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-rose-500 shrink-0 mt-1"></i>
+                                    <span>体型カバー＆スタイルアップのコツ</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-rose-500 shrink-0 mt-1"></i>
+                                    <span>**個別スタイリングブック**を納品</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <a href="#apply" onclick="selectMenu('fashion')" class="w-full bg-sand-900 hover:bg-sand-800 text-white text-center font-bold py-3.5 px-4 rounded-xl transition block">
+                            このコースで申し込む
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="flow" class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <span class="text-rose-500 font-serif text-lg tracking-widest uppercase">Step Flow</span>
+                    <h2 class="text-3xl font-bold mt-1">お申し込みから納品までの流れ</h2>
+                    <p class="text-sand-800 text-sm mt-2">ご自宅からLINE/メールのみで手軽に完結いたします。</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex flex-col sm:flex-row items-start gap-4 p-6 rounded-2xl bg-sand-50 border border-sand-200">
+                        <div class="w-10 h-10 rounded-full bg-rose-500 text-white font-serif font-bold text-lg flex items-center justify-center shrink-0">1</div>
+                        <div class="space-y-1">
+                            <h3 class="text-lg font-bold">フォームよりお申し込み・決済</h3>
+                            <p class="text-sm text-sand-800">下記の専用フォームより希望メニュー・情報を入力。PayPay銀行振込またはオンライン決済を行っていただきます。</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-start gap-4 p-6 rounded-2xl bg-sand-50 border border-sand-200">
+                        <div class="w-10 h-10 rounded-full bg-rose-500 text-white font-serif font-bold text-lg flex items-center justify-center shrink-0">2</div>
+                        <div class="space-y-1">
+                            <h3 class="text-lg font-bold">LINE登録＆お写真・事前回答送付</h3>
+                            <p class="text-sm text-sand-800">決済完了案内画面から公式LINEへお進みいただき、お写真（お顔写真・全身写真）と簡単なヒアリングをお送りいただきます。</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-start gap-4 p-6 rounded-2xl bg-sand-50 border border-sand-200">
+                        <div class="w-10 h-10 rounded-full bg-rose-500 text-white font-serif font-bold text-lg flex items-center justify-center shrink-0">3</div>
+                        <div class="space-y-1">
+                            <h3 class="text-lg font-bold">プロによる分析・オリジナルカルテ作成</h3>
+                            <p class="text-sm text-sand-800">お送りいただいた情報を元に精密診断を実施。あなただけの魅力を整理した特別カルテを丁寧に作成いたします。</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-start gap-4 p-6 rounded-2xl bg-sand-50 border border-sand-200">
+                        <div class="w-10 h-10 rounded-full bg-rose-500 text-white font-serif font-bold text-lg flex items-center justify-center shrink-0">4</div>
+                        <div class="space-y-1">
+                            <h3 class="text-lg font-bold">カルテお届け＆質疑応答サポート</h3>
+                            <p class="text-sm text-sand-800">約3〜5日以内にPDFデータにてカルテをお届け。納品後7日間は質問・相談も受けておりますので安心です。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="apply" class="py-20 bg-rose-50/50">
+            <div class="max-w-3xl mx-auto px-4">
+                <div class="text-center mb-10">
+                    <span class="text-rose-500 font-serif text-lg tracking-widest uppercase">Application</span>
+                    <h2 class="text-3xl font-bold mt-1">診断・ご提案のお申し込み</h2>
+                    <p class="text-sand-800 text-sm mt-2">下記フォームに入力の上、お進みください。</p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-rose-100">
+                    
+                    <!-- ステップインジケーター -->
+                    <div class="flex items-center justify-between mb-8 pb-6 border-b border-sand-200">
+                        <div id="step-nav-1" class="flex items-center gap-2 font-bold text-rose-500">
+                            <span class="w-7 h-7 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs">1</span>
+                            <span class="text-xs sm:text-sm">情報入力</span>
+                        </div>
+                        <div class="h-0.5 flex-1 mx-2 bg-sand-200" id="step-line-1"></div>
+                        <div id="step-nav-2" class="flex items-center gap-2 text-sand-400 font-medium">
+                            <span class="w-7 h-7 rounded-full bg-sand-200 text-sand-800 flex items-center justify-center text-xs">2</span>
+                            <span class="text-xs sm:text-sm">決済選択</span>
+                        </div>
+                        <div class="h-0.5 flex-1 mx-2 bg-sand-200" id="step-line-2"></div>
+                        <div id="step-nav-3" class="flex items-center gap-2 text-sand-400 font-medium">
+                            <span class="w-7 h-7 rounded-full bg-sand-200 text-sand-800 flex items-center justify-center text-xs">3</span>
+                            <span class="text-xs sm:text-sm">完了・案内</span>
+                        </div>
+                    </div>
+
+                    <form id="orderForm" onsubmit="handleFormSubmit(event)">
+                        
+                        <!-- STEP 1: フォーム入力 -->
+                        <div id="step1-content" class="space-y-6">
+                            
+                            <!-- 1. メニュー選択 -->
+                            <div>
+                                <label class="block text-sm font-bold text-sand-900 mb-2">
+                                    ご希望のメニュー <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="grid sm:grid-cols-2 gap-3">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="service_type" value="顔診断" class="peer sr-only" checked onchange="toggleFormFields()">
+                                        <div class="p-4 rounded-2xl border-2 border-sand-200 peer-checked:border-rose-500 peer-checked:bg-rose-50/50 transition">
+                                            <div class="flex items-center justify-between">
+                                                <span class="font-bold text-sm">顔診断＆メイクカルテ</span>
+                                                <span class="text-xs font-bold text-rose-500">¥12,800</span>
+                                            </div>
+                                            <p class="text-xs text-sand-800 mt-1">顔タイプ分析・メイク似合わせ</p>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="service_type" value="ファッション提案" class="peer sr-only" onchange="toggleFormFields()">
+                                        <div class="p-4 rounded-2xl border-2 border-sand-200 peer-checked:border-rose-500 peer-checked:bg-rose-50/50 transition">
+                                            <div class="flex items-center justify-between">
+                                                <span class="font-bold text-sm">ファッション提案</span>
+                                                <span class="text-xs font-bold text-rose-500">¥15,800</span>
+                                            </div>
+                                            <p class="text-xs text-sand-800 mt-1">イベント・日常スタイリング</p>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 2. お名前 -->
+                            <div>
+                                <label for="userName" class="block text-sm font-bold text-sand-900 mb-1">
+                                    お名前（フルネーム） <span class="text-rose-500">*</span>
+                                </label>
+                                <input type="text" id="userName" required placeholder="例：山田 華子" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm">
+                            </div>
+
+                            <!-- 3. 年齢（年代） -->
+                            <div>
+                                <label for="userAge" class="block text-sm font-bold text-sand-900 mb-1">
+                                    ご年齢（年代） <span class="text-rose-500">*</span>
+                                </label>
+                                <select id="userAge" required class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm bg-white">
+                                    <option value="" disabled selected>年代を選択してください</option>
+                                    <option value="20代前半">20代前半</option>
+                                    <option value="20代後半">20代後半</option>
+                                    <option value="30代前半">30代前半</option>
+                                    <option value="30代後半">30代後半</option>
+                                    <option value="40代前半">40代前半</option>
+                                    <option value="40代後半">40代後半</option>
+                                    <option value="50代以上">50代以上</option>
+                                </select>
+                            </div>
+
+                            <!-- 4. メールアドレス -->
+                            <div>
+                                <label for="userEmail" class="block text-sm font-bold text-sand-900 mb-1">
+                                    メールアドレス <span class="text-rose-500">*</span>
+                                </label>
+                                <input type="email" id="userEmail" required placeholder="例：example@email.com" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm">
+                            </div>
+
+                            <!-- 5-A: 顔診断分岐（なりたい印象・メイク悩み） -->
+                            <div id="face-fields" class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-bold text-sand-900 mb-1">
+                                        ご要望・なりたい印象 <span class="text-rose-500">*</span>
+                                    </label>
+                                    <select id="faceImpression" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm bg-white">
+                                        <option value="似合うメイクを知りたい">自分に本当に似合うメイクを知りたい</option>
+                                        <option value="大人っぽく上品に見せたい">大人っぽく上品・エレガントに見せたい</option>
+                                        <option value="若々しく可愛らしく見せたい">若々しく可愛らしく・親しみやすく見せたい</option>
+                                        <option value="仕事で頼もしく見える印象">仕事で仕事ができる・頼もしく見える印象にしたい</option>
+                                        <option value="その他">その他（自由記述欄へ）</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="faceNotes" class="block text-sm font-bold text-sand-900 mb-1">
+                                        メイクや顔立ちに関する悩み（任意）
+                                    </label>
+                                    <textarea id="faceNotes" rows="3" placeholder="眉毛の書き方がわからない、似合うリップの色を知りたい等" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- 5-B: ファッション提案分岐（イベント・着用シーン） -->
+                            <div id="fashion-fields" class="space-y-4 hidden">
+                                <div>
+                                    <label class="block text-sm font-bold text-sand-900 mb-1">
+                                        ご提案を希望するイベント・着用シーン <span class="text-rose-500">*</span>
+                                    </label>
+                                    <select id="fashionEvent" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm bg-white">
+                                        <option value="日常・普段着（垢抜けコーデ）">日常・普段着（カジュアルな垢抜けコーデ）</option>
+                                        <option value="入学式・卒業式・卒園式">入学式・卒業式・卒園式（ママ行事）</option>
+                                        <option value="婚活・お見合い・デート">婚活・お見合い・デートコーデ</option>
+                                        <option value="オフィス・お仕事着">オフィス・ビジネス・研修登壇</option>
+                                        <option value="旅行・お出かけ">旅行・イベント・お出かけ着</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="fashionNotes" class="block text-sm font-bold text-sand-900 mb-1">
+                                        お洋服のお悩みや好み（任意）
+                                    </label>
+                                    <textarea id="fashionNotes" rows="3" placeholder="体型カバーがしたい、パンツスタイルが好き、予算感など" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm"></textarea>
+                                </div>
+                            </div>
+
+                            <button type="button" onclick="goToStep2()" class="w-full bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 px-6 rounded-xl transition flex items-center justify-center gap-2 shadow-md">
+                                <span>次へ：決済方法の選択</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+
+                        <!-- STEP 2: 決済方法の選択 -->
+                        <div id="step2-content" class="space-y-6 hidden">
+                            <div class="bg-sand-50 p-4 rounded-xl border border-sand-200">
+                                <p class="text-xs text-sand-800">選択中メニュー</p>
+                                <p id="summaryMenu" class="font-bold text-sand-900 text-base mt-0.5">顔診断＆メイクカルテコース</p>
+                                <p id="summaryPrice" class="text-rose-500 font-bold text-lg mt-1">¥12,800（税込）</p>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-sand-900 mb-2">
+                                    お支払い方法の選択 <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="space-y-3">
+                                    <!-- PayPay銀行振込 -->
+                                    <label class="cursor-pointer block">
+                                        <input type="radio" name="payment_method" value="paypay_bank" class="peer sr-only" checked>
+                                        <div class="p-4 rounded-2xl border-2 border-sand-200 peer-checked:border-rose-500 peer-checked:bg-rose-50/50 transition flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+                                                <i data-lucide="landmark" class="w-5 h-5"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-bold text-sm">PayPay銀行（口座振込）</p>
+                                                <p class="text-xs text-sand-800">振込先口座情報を次画面で表示いたします。</p>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <!-- PayPay送金 -->
+                                    <label class="cursor-pointer block">
+                                        <input type="radio" name="payment_method" value="paypay_app" class="peer sr-only">
+                                        <div class="p-4 rounded-2xl border-2 border-sand-200 peer-checked:border-rose-500 peer-checked:bg-rose-50/50 transition flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-full bg-red-100 text-red-500 flex items-center justify-center shrink-0 font-bold text-xs">
+                                                Pay
+                                            </div>
+                                            <div>
+                                                <p class="font-bold text-sm">PayPay（QRコード / アプリ送金）</p>
+                                                <p class="text-xs text-sand-800">スマホでPayPay送金用リンクを表示いたします。</p>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <!-- クレジットカード決済 -->
+                                    <label class="cursor-pointer block">
+                                        <input type="radio" name="payment_method" value="credit_card" class="peer sr-only">
+                                        <div class="p-4 rounded-2xl border-2 border-sand-200 peer-checked:border-rose-500 peer-checked:bg-rose-50/50 transition flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                                                <i data-lucide="credit-card" class="w-5 h-5"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-bold text-sm">クレジットカード決済（Stripe/Square等）</p>
+                                                <p class="text-xs text-sand-800">各種カード対応。外部決済ページへ遷移できます。</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <button type="button" onclick="goToStep1()" class="w-1/3 bg-sand-100 hover:bg-sand-200 text-sand-800 font-bold py-4 px-4 rounded-xl transition text-center text-sm">
+                                    戻る
+                                </button>
+                                <button type="submit" class="w-2/3 bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 px-6 rounded-xl transition flex items-center justify-center gap-2 shadow-md">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                    <span>お申し込みを完了する</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: 完了＆決済案内画面 -->
+                        <div id="step3-content" class="space-y-6 hidden text-center">
+                            <div class="w-16 h-16 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i data-lucide="check-circle" class="w-8 h-8"></i>
+                            </div>
+
+                            <h3 class="text-2xl font-bold text-sand-900">お申し込みを受け付けました</h3>
+                            <p class="text-sm text-sand-800">ご入力いただいた情報をメールおよびLINE連携用に登録しました。</p>
+
+                            <!-- 動的に口座・送金案内を表示 -->
+                            <div id="payment-guide-box" class="p-6 rounded-2xl bg-sand-50 border border-sand-200 text-left space-y-4">
+                                <!-- JSで動的差し替え -->
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-green-50 border border-green-200 text-left">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center shrink-0 font-bold text-sm">
+                                        LINE
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-sm text-green-900">【重要】お写真送信・連絡用公式LINE</p>
+                                        <p class="text-xs text-green-800 mt-0.5">決済完了後、下記LINEに「お名前」を送信してください。アドバイザーが直接診断のご案内をお送りします。</p>
+                                        <a href="https://line.me" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold text-sm py-2.5 px-5 rounded-full shadow transition">
+                                            <span>公式LINEを友達追加する</span>
+                                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-16 bg-white">
+            <div class="max-w-3xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <span class="text-rose-500 font-serif text-lg tracking-widest uppercase">FAQ</span>
+                    <h2 class="text-2xl font-bold mt-1">よくあるご質問</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200">
+                        <p class="font-bold text-sm text-sand-900 flex items-center gap-2">
+                            <span class="text-rose-500 font-serif font-bold">Q.</span>
+                            写真の提出はどのような写真が必要ですか？
+                        </p>
+                        <p class="text-xs sm:text-sm text-sand-800 mt-2 pl-5 leading-relaxed">
+                            正面を向いたノーメイク（またはナチュラルメイク）のお顔写真1枚と、全身の雰囲気がわかる写真を1〜2枚お送りいただきます。撮影方法のガイドもLINEにてお渡しします。
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200">
+                        <p class="font-bold text-sm text-sand-900 flex items-center gap-2">
+                            <span class="text-rose-500 font-serif font-bold">Q.</span>
+                            領収書の発行は可能ですか？
+                        </p>
+                        <p class="text-xs sm:text-sm text-sand-800 mt-2 pl-5 leading-relaxed">
+                            はい、可能です。お申し込み時の備考欄、または決済後の公式LINEにて「領収書発行希望」とお知らせください。PDFにて発行いたします。
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200">
+                        <p class="font-bold text-sm text-sand-900 flex items-center gap-2">
+                            <span class="text-rose-500 font-serif font-bold">Q.</span>
+                            カルテ納品後に質問はできますか？
+                        </p>
+                        <p class="text-xs sm:text-sm text-sand-800 mt-2 pl-5 leading-relaxed">
+                            納品日より7日間のアフターフォロー期間を設けております。カルテ内容で分からないことや、服選びの疑問はお気軽にLINEで質問していただけます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-sand-900 text-white py-10 border-t border-sand-800">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-4">
+            <p class="text-2xl font-serif font-bold text-rose-300">Bloom Style</p>
+            <p class="text-xs text-sand-300">パーソナル顔診断＆スタイリングアドバイザー</p>
+            <p class="text-xs text-sand-300">© 2026 Bloom Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Lucide Icons イニシャライズ
+        lucide.createIcons();
+
+        // フォーム切り替えロジック
+        function toggleFormFields() {
+            const selectedMenu = document.querySelector('input[name="service_type"]:checked').value;
+            const faceFields = document.getElementById('face-fields');
+            const fashionFields = document.getElementById('fashion-fields');
+
+            if (selectedMenu === '顔診断') {
+                faceFields.classList.remove('hidden');
+                fashionFields.classList.add('hidden');
+            } else {
+                faceFields.classList.add('hidden');
+                fashionFields.classList.remove('hidden');
+            }
+        }
+
+        function selectMenu(type) {
+            if (type === 'face') {
+                document.querySelector('input[name="service_type"][value="顔診断"]').checked = true;
+            } else {
+                document.querySelector('input[name="service_type"][value="ファッション提案"]').checked = true;
+            }
+            toggleFormFields();
+        }
+
+        // ステップ遷移
+        function goToStep2() {
+            const userName = document.getElementById('userName').value.trim();
+            const userAge = document.getElementById('userAge').value;
+            const userEmail = document.getElementById('userEmail').value.trim();
+
+            if (!userName || !userAge || !userEmail) {
+                alert('お名前、年齢、メールアドレスをすべてご入力ください。');
+                return;
+            }
+
+            const selectedMenu = document.querySelector('input[name="service_type"]:checked').value;
+            document.getElementById('summaryMenu').innerText = selectedMenu === '顔診断' ? '顔診断＆メイクカルテコース' : 'パーソナルファッション提案';
+            document.getElementById('summaryPrice').innerText = selectedMenu === '顔診断' ? '¥12,800（税込）' : '¥15,800（税込）';
+
+            document.getElementById('step1-content').classList.add('hidden');
+            document.getElementById('step2-content').classList.remove('hidden');
+
+            // UI step line update
+            document.getElementById('step-nav-2').classList.remove('text-sand-400');
+            document.getElementById('step-nav-2').classList.add('text-rose-500', 'font-bold');
+            document.getElementById('step-line-1').classList.remove('bg-sand-200');
+            document.getElementById('step-line-1').classList.add('bg-rose-500');
+        }
+
+        function goToStep1() {
+            document.getElementById('step2-content').classList.add('hidden');
+            document.getElementById('step1-content').classList.remove('hidden');
+            
+            document.getElementById('step-nav-2').classList.add('text-sand-400');
+            document.getElementById('step-nav-2').classList.remove('text-rose-500', 'font-bold');
+            document.getElementById('step-line-1').classList.add('bg-sand-200');
+            document.getElementById('step-line-1').classList.remove('bg-rose-500');
+        }
+
+        // フォーム送信＆完了案内
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+            const selectedMenu = document.querySelector('input[name="service_type"]:checked').value;
+            const userName = document.getElementById('userName').value;
+            const price = selectedMenu === '顔診断' ? '¥12,800' : '¥15,800';
+
+            const guideBox = document.getElementById('payment-guide-box');
+
+            if (paymentMethod === 'paypay_bank') {
+                guideBox.innerHTML = `
+                    <div class="border-b border-sand-200 pb-3 mb-3">
+                        <span class="inline-block px-2.5 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-md mb-1">振込先案内</span>
+                        <h4 class="font-bold text-sand-900 text-base">PayPay銀行への振込口座</h4>
+                    </div>
+                    <div class="space-y-1.5 text-xs sm:text-sm text-sand-800">
+                        <p><span class="font-semibold text-sand-900">金融機関名：</span>PayPay銀行（0033）</p>
+                        <p><span class="font-semibold text-sand-900">本店支店名：</span>ビジネス営業部（001）</p>
+                        <p><span class="font-semibold text-sand-900">口座種別：</span>普通預金</p>
+                        <p><span class="font-semibold text-sand-900">口座番号：</span>1234567</p>
+                        <p><span class="font-semibold text-sand-900">口座名義：</span>ブルームスタイル　ヤマダハナコ</p>
+                        <p><span class="font-semibold text-sand-900">振込金額：</span><strong class="text-rose-500">${price}</strong></p>
+                    </div>
+                    <p class="text-xs text-rose-500 mt-2">※お振込名義は「${userName}」様のお名前でお振込みをお願いいたします。</p>
+                `;
+            } else if (paymentMethod === 'paypay_app') {
+                guideBox.innerHTML = `
+                    <div class="border-b border-sand-200 pb-3 mb-3">
+                        <span class="inline-block px-2.5 py-1 bg-red-100 text-red-600 text-xs font-bold rounded-md mb-1">PayPay送金</span>
+                        <h4 class="font-bold text-sand-900 text-base">PayPayアプリでのご送金</h4>
+                    </div>
+                    <p class="text-xs text-sand-800">下記ボタンよりPayPayアプリを起動して、<strong>${price}</strong>を送金してください。</p>
+                    <div class="mt-3 text-center">
+                        <a href="https://paypay.ne.jp" target="_blank" class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-2.5 px-6 rounded-full text-xs shadow">
+                            PayPayで送金する
+                        </a>
+                    </div>
+                `;
+            } else {
+                guideBox.innerHTML = `
+                    <div class="border-b border-sand-200 pb-3 mb-3">
+                        <span class="inline-block px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-md mb-1">クレジットカード決済</span>
+                        <h4 class="font-bold text-sand-900 text-base">クレジットカードでのお支払い</h4>
+                    </div>
+                    <p class="text-xs text-sand-800">下記の決済ボタンよりクレジットカード（VISA/Master/JCB等）で<strong>${price}</strong>のお手続きを完了させてください。</p>
+                    <div class="mt-3 text-center">
+                        <a href="#" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-6 rounded-full text-xs shadow">
+                            カード決済画面を開く
+                        </a>
+                    </div>
+                `;
+            }
+
+            document.getElementById('step2-content').classList.add('hidden');
+            document.getElementById('step3-content').classList.remove('hidden');
+
+            document.getElementById('step-nav-3').classList.remove('text-sand-400');
+            document.getElementById('step-nav-3').classList.add('text-rose-500', 'font-bold');
+            document.getElementById('step-line-2').classList.remove('bg-sand-200');
+            document.getElementById('step-line-2').classList.add('bg-rose-500');
+        }
+    </script>
+</body>
+</html>
