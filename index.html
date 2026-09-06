@@ -87,13 +87,9 @@
             <div class="max-w-6xl mx-auto px-4 relative z-10">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6 text-center md:text-left">
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-100 border border-rose-200 text-rose-600 text-xs md:text-sm font-medium shadow-sm">
-                            <i data-lucide="sparkles" class="w-4 h-4"></i>
-                            <span>オンライン完結・全国対応</span>
-                        </div>
                         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-sand-900">
                             「自分に似合う」を知って、<br>
-                            <span class="text-rose-500 bg-gradient-to-r from-rose-500 to-rose-400 bg-clip-text text-transparent">理想の自分</span>を叶える。
+                            <span class="text-rose-500 bg-gradient-to-r from-rose-500 to-rose-400 bg-clip-text text-transparent">理想の自分を叶える。</span>
                         </h1>
                         <p class="text-sand-800 text-sm sm:text-base leading-relaxed">
                             顔分析診断・パーソナルファッション提案で、毎日の服選びの悩みをゼロに。<br class="hidden sm:inline">
@@ -114,21 +110,25 @@
 
                     <!-- メインイメージビジュアル -->
                     <div class="relative">
-                        <div class="relative mx-auto max-w-xs sm:max-w-sm bg-white p-2.5 sm:p-3 rounded-3xl shadow-xl border border-rose-100">
-                            <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-rose-50 group">
-                                <!-- メイン画像（初期状態はフォールバック写真を表示、ローカル画像読み込み対応） -->
-                                <img id="heroImage" src="IMG_6937_2.jpeg" alt="スタイリング風景" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80';" class="w-full h-full object-cover object-bottom">
+                        <div class="relative mx-auto max-w-xs sm:max-w-sm bg-white p-2.5 rounded-3xl shadow-2xl border border-rose-100">
+                            <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-sand-100 group">
+                                <!-- 指定された IMG_6937.jpeg をメインに設定 -->
+                                <img id="heroImage" src="IMG_6937.jpeg" alt="ファッションスタイリング風景" class="w-full h-full object-cover object-bottom transition-all duration-300">
                                 
-                                <!-- プレビュー画面で手持ちの画像をすぐ反映できる選択ボタン -->
+                                <!-- プレビュー画面でいつでも画像を差し替え・固定できるボタン -->
                                 <label class="absolute top-3 right-3 bg-white/90 hover:bg-white text-sand-900 text-xs font-bold py-1.5 px-3 rounded-full shadow-md cursor-pointer border border-rose-200 flex items-center gap-1.5 transition backdrop-blur-sm opacity-80 hover:opacity-100">
                                     <i data-lucide="camera" class="w-3.5 h-3.5 text-rose-500"></i>
                                     <span>写真を反映</span>
-                                    <input type="file" accept="image/*" class="sr-only" onchange="previewUserImage(event)">
+                                    <input type="file" accept="image/*" class="sr-only" onchange="updateHeroImage(event)">
                                 </label>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- お悩みチェックセクション ＋ ギャラリー -->
             </div>
         </section>
 
@@ -634,36 +634,36 @@
     </footer>
 
     <script>
-        // Lucide Icons 初期化
         lucide.createIcons();
 
-        // プレビュー画面で手元の画像を即座に反映させる関数
-        function previewUserImage(event) {
+        // ページ読み込み時に保存された画像があれば復元
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedHero = localStorage.getItem('nanala_hero_image');
+            if (savedHero) {
+                const heroImg = document.getElementById('heroImage');
+                if (heroImg) heroImg.src = savedHero;
+            }
+        });
+
+        // ヒーロー画像を選択・ローカル保存してリロードしても戻らないようにする関数
+        function updateHeroImage(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const heroImg = document.getElementById('heroImage');
-                    heroImg.src = e.target.result;
+                    if (heroImg) {
+                        heroImg.src = e.target.result;
+                        // ブラウザに保存して再読み込み時も維持
+                        localStorage.setItem('nanala_hero_image', e.target.result);
+                    }
                 };
                 reader.readAsDataURL(file);
             }
         }
 
-        // フォーム項目の動的表示切り替え
-        function toggleFormFields() {
-            const selectedMenu = document.querySelector('input[name="service_type"]:checked').value;
-            const faceFields = document.getElementById('face-fields');
-            const fashionFields = document.getElementById('fashion-fields');
-
-            if (selectedMenu === '顔診断') {
-                faceFields.classList.remove('hidden');
-                fashionFields.classList.add('hidden');
-            } else {
-                faceFields.classList.add('hidden');
-                fashionFields.classList.remove('hidden');
-            }
-        }
+        // Google Apps Script Webhook URL
+        const GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyofqOsl9qZ3w8b3t333P9f0N4Bv-yPj109wJ9P6eYQ2f_E9M_D77A-l6-vCg1XyY_1/exec';
 
         // メニュー一覧ボタンから選択時
         function selectMenu(type) {
@@ -851,3 +851,7 @@
             setTimeout(() => {
                 copyBtnText.innerText = 'お申し込み内容をコピー';
             }, 3000);
+        }
+    </script>
+</body>
+</html>
