@@ -670,31 +670,33 @@
             }
 
             const selectedMenu = document.querySelector('input[name="service_type"]:checked').value;
+            const menuName = selectedMenu === '顔診断' ? '顔分析診断＆メイクカルテ' : 'ファッション提案';
             const userName = document.getElementById('userName').value.trim();
             const userAge = document.getElementById('userAge').value;
             const userEmail = document.getElementById('userEmail').value.trim();
             const price = selectedMenu === '顔診断' ? '¥24,800' : '¥13,200';
 
-            const payload = {
-                "ご希望メニュー": selectedMenu === '顔診断' ? '顔分析診断＆メイクカルテ' : 'ファッション提案',
-                "お名前": userName,
-                "ご年代": userAge,
-                "メールアドレス": userEmail,
-                "金額": price,
-                service_type: selectedMenu,
-                name: userName,
-                age: userAge,
-                email: userEmail,
-                price: price
-            };
+            // スプレッドシート転記用 FormData の生成（ご提示いただいたキー名に対応）
+            const formData = new FormData();
+            formData.append('menu', menuName);
+            formData.append('name', userName);
+            formData.append('age', userAge);
+            formData.append('email', userEmail);
+            formData.append('price', price);
 
-            // バックグラウンドでGASへ通知送信
+            // 互換性のため日本語キーも追加
+            formData.append('ご希望メニュー', menuName);
+            formData.append('お名前', userName);
+            formData.append('ご年代', userAge);
+            formData.append('メールアドレス', userEmail);
+            formData.append('金額', price);
+
+            // バックグラウンドでGASへ送信（スプレッドシート転記＆メール通知）
             if (GAS_WEBHOOK_URL) {
                 fetch(GAS_WEBHOOK_URL, {
                     method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    body: formData,
+                    mode: 'no-cors'
                 }).catch(err => console.error('Transmission error:', err));
             }
 
@@ -703,7 +705,7 @@
                 + `・お名前：${userName} 様\n`
                 + `・ご年代：${userAge}\n`
                 + `・メールアドレス：${userEmail}\n`
-                + `・ご希望メニュー：${selectedMenu === '顔診断' ? '顔分析診断＆メイクカルテ' : 'ファッション提案'}\n`
+                + `・ご希望メニュー：${menuName}\n`
                 + `・金額：${price}（税込）`;
 
             const guideBox = document.getElementById('payment-guide-box');
