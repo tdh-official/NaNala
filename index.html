@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【公式】パーソナル顔診断＆ファッション提案 | NaNala style</title>
+    <title>【公式】パーソナル顔診断＆ファッション提案 | NaNala</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,10 +62,11 @@
 </head>
 <body class="antialiased selection:bg-rose-200">
 
+    <!-- ナビゲーションバー -->
     <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-40 border-b border-sand-200">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
             <a href="#" class="flex items-center gap-2">
-                <span class="text-2xl font-serif font-bold text-rose-500 tracking-wider">NaNala style</span>
+                <span class="text-2xl font-serif font-bold text-rose-500 tracking-wider">NaNala</span>
             </a>
             <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-sand-800">
                 <a href="#features" class="hover:text-rose-500 transition">魅力・特徴</a>
@@ -81,6 +82,7 @@
     </header>
 
     <main class="pt-16">
+        <!-- ヒーローセクション -->
         <section class="relative overflow-hidden pt-12 pb-20 md:py-28 bg-gradient-to-b from-rose-50 via-sand-50 to-white">
             <div class="absolute inset-0 bg-pattern pointer-events-none"></div>
             <div class="max-w-6xl mx-auto px-4 relative z-10">
@@ -107,7 +109,7 @@
                         </div>
                     </div>
 
-                    <!-- メインイメージビジュアル（GitHub上の写真URLを使用） -->
+                    <!-- メインイメージビジュアル（GitHub上のRAW URL） -->
                     <div class="relative">
                         <div class="relative mx-auto max-w-xs sm:max-w-sm bg-white p-2.5 rounded-3xl shadow-2xl border border-rose-100">
                             <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-sand-100">
@@ -119,6 +121,7 @@
             </div>
         </section>
 
+        <!-- お悩みチェックセクション -->
         <section id="features" class="py-16 bg-white border-y border-sand-100">
             <div class="max-w-4xl mx-auto px-4">
                 <div class="text-center mb-12">
@@ -190,6 +193,7 @@
             </div>
         </section>
 
+        <!-- 診断メニュー -->
         <section id="menu" class="py-20 bg-sand-50">
             <div class="max-w-5xl mx-auto px-4">
                 <div class="text-center mb-16">
@@ -281,6 +285,7 @@
             </div>
         </section>
 
+        <!-- 診断の流れ -->
         <section id="flow" class="py-20 bg-white">
             <div class="max-w-4xl mx-auto px-4">
                 <div class="text-center mb-16">
@@ -358,6 +363,7 @@
             </div>
         </section>
 
+        <!-- お申し込みフォームセクション -->
         <section id="apply" class="py-20 bg-rose-50/50">
             <div class="max-w-3xl mx-auto px-4">
                 <div class="text-center mb-10">
@@ -386,7 +392,7 @@
                         </div>
                     </div>
 
-                    <form id="orderForm" onsubmit="handleFormSubmit(event)">
+                    <form id="orderForm" novalidate onsubmit="event.preventDefault();">
                         
                         <!-- STEP 1: フォーム入力 -->
                         <div id="step1-content" class="space-y-6">
@@ -420,69 +426,48 @@
                                 </div>
                             </div>
 
-                            <!-- 2. お名前 -->
-                            <div>
-                                <label for="userName" class="block text-sm font-bold text-sand-900 mb-1">
-                                    お名前（フルネーム） <span class="text-rose-500">*</span>
-                                </label>
-                                <input type="text" id="userName" required placeholder="例：山田 華子" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm">
-                            </div>
-
-                            <!-- 3. 年齢（年代） -->
-                            <div>
-                                <label for="userAge" class="block text-sm font-bold text-sand-900 mb-1">
-                                    ご年齢（年代） <span class="text-rose-500">*</span>
-                                </label>
-                                <select id="userAge" required class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm bg-white">
-                                    <option value="" disabled selected>年代を選択してください</option>
-                                    <option value="20代前半">20代前半</option>
-                                    <option value="20代後半">20代後半</option>
-                                    <option value="30代前半">30代前半</option>
-                                    <option value="30代後半">30代後半</option>
-                                    <option value="40代前半">40代前半</option>
-                                    <option value="40代後半">40代後半</option>
-                                    <option value="50代以上">50代以上</option>
-                                </select>
-                            </div>
-
-                            <!-- 4. メールアドレス -->
-                            <div>
-                                <label for="userEmail" class="block text-sm font-bold text-sand-900 mb-1">
-                                    メールアドレス <span class="text-rose-500">*</span>
-                                </label>
-                                <input type="email" id="userEmail" required placeholder="例：example@email.com" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm">
-                            </div>
-
-                            <!-- 5-B: 顔診断分岐 -->
-                            <div id="face-fields" class="space-y-4 hidden">
-                                <div>
-                                    <label class="block text-sm font-bold text-sand-900 mb-1">
-                                        ご要望・なりたい印象 <span class="text-rose-500">*</span>
-                                    </label>
-                                    <select id="faceImpression" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm bg-white">
-                                        <option value="似合うメイクを知りたい">自分に本当に似合うメイクを知りたい</option>
-                                        <option value="大人っぽく上品に見せたい">大人っぽく上品・エレガントに見せたい</option>
-                                        <option value="若々しく可愛らしく見せたい">若々しく可愛らしく・親しみやすく見せたい</option>
-                                        <option value="仕事で頼もしく見える印象">仕事で仕事ができる・頼もしく見える印象にしたい</option>
-                                        <option value="その他">その他（自由記述欄へ）</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="faceNotes" class="block text-sm font-bold text-sand-900 mb-1">
-                                        メイクや顔立ちに関する悩み（任意）
-                                    </label>
-                                    <textarea id="faceNotes" rows="3" placeholder="眉毛の書き方がわからない、似合うリップの色を知りたい等" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm"></textarea>
-                                </div>
-                            </div>
-
-                            <div id="validation-msg" class="hidden p-3 rounded-xl bg-red-50 text-red-600 text-xs font-bold border border-red-200"></div>
-
-                            <button type="button" onclick="goToStep2()" class="w-full bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 px-6 rounded-xl transition flex items-center justify-center gap-2 shadow-md">
-                                <span>次へ：決済方法の選択</span>
-                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                            </button>
+                        <!-- 2. お名前 -->
+                        <div>
+                            <label for="userName" class="block text-sm font-bold text-sand-900 mb-1">
+                                お名前（フルネーム） <span class="text-rose-500">*</span>
+                            </label>
+                            <input type="text" id="userName" placeholder="例：山田 華子" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm">
                         </div>
 
+                        <!-- 3. 年齢（年代） -->
+                        <div>
+                            <label for="userAge" class="block text-sm font-bold text-sand-900 mb-1">
+                                ご年齢（年代） <span class="text-rose-500">*</span>
+                            </label>
+                            <select id="userAge" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm bg-white">
+                                <option value="" disabled selected>年代を選択してください</option>
+                                <option value="20代前半">20代前半</option>
+                                <option value="20代後半">20代後半</option>
+                                <option value="30代前半">30代前半</option>
+                                <option value="30代後半">30代後半</option>
+                                <option value="40代前半">40代前半</option>
+                                <option value="40代後半">40代後半</option>
+                                <option value="50代以上">50代以上</option>
+                            </select>
+                        </div>
+
+                        <!-- 4. メールアドレス -->
+                        <div>
+                            <label for="userEmail" class="block text-sm font-bold text-sand-900 mb-1">
+                                メールアドレス <span class="text-rose-500">*</span>
+                            </label>
+                            <input type="email" id="userEmail" placeholder="例：example@email.com" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm">
+                        </div>
+
+                        <div id="validation-msg" class="hidden p-3 rounded-xl bg-red-50 text-red-600 text-xs font-bold border border-red-200"></div>
+
+                        <button type="button" onclick="goToStep2()" class="w-full bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 px-6 rounded-xl transition flex items-center justify-center gap-2 shadow-md cursor-pointer">
+                            <span>次へ：決済方法の選択</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- STEP 2: 決済確認 -->
                         <div id="step2-content" class="space-y-6 hidden">
                             <div class="bg-sand-50 p-4 rounded-xl border border-sand-200">
                                 <p class="text-xs text-sand-800">選択中メニュー</p>
@@ -506,16 +491,17 @@
                             </div>
 
                             <div class="flex items-center gap-3">
-                                <button type="button" onclick="goToStep1()" class="w-1/3 bg-sand-100 hover:bg-sand-200 text-sand-800 font-bold py-4 px-4 rounded-xl transition text-center text-sm">
+                                <button type="button" onclick="goToStep1()" class="w-1/3 bg-sand-100 hover:bg-sand-200 text-sand-800 font-bold py-4 px-4 rounded-xl transition text-center text-sm cursor-pointer">
                                     戻る
                                 </button>
-                                <button type="submit" id="submitBtn" class="w-2/3 bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 px-6 rounded-xl transition flex items-center justify-center gap-2 shadow-md">
+                                <button type="button" id="submitBtn" onclick="handleOrderSubmit()" class="w-2/3 bg-rose-500 hover:bg-rose-600 active:bg-rose-700 text-white font-bold py-4 px-6 rounded-xl transition flex items-center justify-center gap-2 shadow-md cursor-pointer select-none">
                                     <i data-lucide="check" class="w-4 h-4"></i>
                                     <span>お申し込みを完了する</span>
                                 </button>
                             </div>
                         </div>
 
+                        <!-- STEP 3: 完了・案内画面 -->
                         <div id="step3-content" class="space-y-6 hidden text-center">
                             <div class="w-16 h-16 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-2">
                                 <i data-lucide="check-circle" class="w-8 h-8"></i>
@@ -555,48 +541,40 @@
             </div>
         </section>
 
-        <section id="faq" class="py-16 bg-white">
-            <div class="max-w-3xl mx-auto px-4">
-                <div class="text-center mb-12">
-                    <span class="text-rose-500 font-serif text-lg tracking-widest uppercase">FAQ</span>
-                    <h2 class="text-2xl font-bold mt-1">よくあるご質問</h2>
+        <!-- FAQセクション -->
+    <section id="faq" class="py-16 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-rose-500 font-serif text-lg tracking-widest uppercase">FAQ</span>
+                <h2 class="text-2xl font-bold mt-1">よくあるご質問</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200">
+                    <p class="font-bold text-sm text-sand-900 flex items-center gap-2">
+                        <span class="text-rose-500 font-serif font-bold">Q.</span>
+                        写真の提出はどのような写真が必要ですか？
+                    </p>
+                    <p class="text-xs sm:text-sm text-sand-800 mt-2 pl-5 leading-relaxed">
+                        正面を向いたノーメイク（またはナチュラルメイク）のお顔写真1枚と、手持ちアイテムの写真をお送りいただきます。
+                    </p>
                 </div>
 
-                <div class="space-y-4">
-                    <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200">
-                        <p class="font-bold text-sm text-sand-900 flex items-center gap-2">
-                            <span class="text-rose-500 font-serif font-bold">Q.</span>
-                            写真の提出はどのような写真が必要ですか？
-                        </p>
-                        <p class="text-xs sm:text-sm text-sand-800 mt-2 pl-5 leading-relaxed">
-                            正面を向いたノーメイク（またはナチュラルメイク）のお顔写真1枚と、手持ちアイテムの写真をお送りいただきます。撮影方法のガイドもLINEにてお渡しします。
-                        </p>
-                    </div>
-
-                    <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200">
-                        <p class="font-bold text-sm text-sand-900 flex items-center gap-2">
-                            <span class="text-rose-500 font-serif font-bold">Q.</span>
-                            領収書の発行は可能ですか？
-                        </p>
-                        <p class="text-xs sm:text-sm text-sand-800 mt-2 pl-5 leading-relaxed">
-                            はい、可能です。お申し込み後の公式LINEにて「領収書発行希望」とお知らせください。PDFにて発行いたします。
-                        </p>
-                    </div>
-
-                    <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200">
-                        <p class="font-bold text-sm text-sand-900 flex items-center gap-2">
-                            <span class="text-rose-500 font-serif font-bold">Q.</span>
-                            カルテ納品後に質問はできますか？
-                        </p>
-                        <p class="text-xs sm:text-sm text-sand-800 mt-2 pl-5 leading-relaxed">
-                            納品後、公式LINEより1週間の質問し放題期間を設けております。日々の服選びや組み合わせの実践で迷った際は、お気軽にLINEでご相談いただけます。
-                        </p>
-                    </div>
+                <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200">
+                    <p class="font-bold text-sm text-sand-900 flex items-center gap-2">
+                        <span class="text-rose-500 font-serif font-bold">Q.</span>
+                        カルテ納品後に質問はできますか？
+                    </p>
+                    <p class="text-xs sm:text-sm text-sand-800 mt-2 pl-5 leading-relaxed">
+                        納品後、公式LINEより1週間の質問し放題期間を設けております。日々の服選びや組み合わせの実践で迷った際は、お気軽にLINEでご相談いただけます。
+                    </p>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
 
+    <!-- モーダル（拡大画像ビューアー） -->
     <div id="imageModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-200" onclick="closeModal()">
         <div class="relative max-w-2xl w-full max-h-[90vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
             <button type="button" onclick="closeModal()" class="absolute -top-12 right-0 text-white hover:text-rose-200 p-2 rounded-full">
@@ -606,14 +584,16 @@
         </div>
     </div>
 
+    <!-- フッター -->
     <footer class="bg-sand-900 text-white py-10 border-t border-sand-800">
         <div class="max-w-6xl mx-auto px-4 text-center space-y-4">
-            <p class="text-2xl font-serif font-bold text-rose-300">NaNala style</p>
-            <p class="text-xs text-sand-300">パーソナル顔診断＆スタイリングアドバイザー</p>
-            <p class="text-xs text-sand-300">© 2026 NaNala style. All rights reserved.</p>
+            <p class="text-2xl font-serif font-bold text-rose-300">NaNala</p>
+            <p class="text-xs text-sand-300">顔分析ファッションアドバイザー</p>
+            <p class="text-xs text-sand-300">© 2026 NaNala. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- スクリプト部 -->
     <script>
         lucide.createIcons();
 
@@ -621,17 +601,8 @@
         const GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyofqOsl9qZ3w8b3t333P9f0N4Bv-yPj109wJ9P6eYQ2f_E9M_D77A-l6-vCg1XyY_1/exec';
         let latestOrderSummary = '';
 
-        // フォーム切り替え
         function toggleFormFields() {
-            const selectedMenu = document.querySelector('input[name="service_type"]:checked').value;
-            const faceFields = document.getElementById('face-fields');
-            if (faceFields) {
-                if (selectedMenu === '顔診断') {
-                    faceFields.classList.remove('hidden');
-                } else {
-                    faceFields.classList.add('hidden');
-                }
-            }
+            // 入力項目を共通化したため空処理
         }
 
         function selectMenu(type) {
@@ -643,6 +614,7 @@
             toggleFormFields();
         }
 
+        // ステップ遷移制御
         function goToStep2() {
             const userName = document.getElementById('userName').value.trim();
             const userAge = document.getElementById('userAge').value;
@@ -683,66 +655,56 @@
             document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // フォーム送信
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-
+        // フォーム送信・完了処理（スマホ対応・タップ即時反応）
+        function handleOrderSubmit() {
             const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `
-                <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <span>送信中...</span>
-            `;
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `
+                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>処理中...</span>
+                `;
+            }
 
             const selectedMenu = document.querySelector('input[name="service_type"]:checked').value;
             const userName = document.getElementById('userName').value.trim();
             const userAge = document.getElementById('userAge').value;
             const userEmail = document.getElementById('userEmail').value.trim();
-            const faceNotesEl = document.getElementById('faceNotes');
-            const notes = selectedMenu === '顔診断' && faceNotesEl ? faceNotesEl.value.trim() : '';
-            const impression = selectedMenu === '顔診断' && document.getElementById('faceImpression') ? document.getElementById('faceImpression').value : '';
             const price = selectedMenu === '顔診断' ? '¥24,800' : '¥13,200';
 
             const payload = {
-                "ご希望メニュー": selectedMenu,
+                "ご希望メニュー": selectedMenu === '顔診断' ? '顔分析診断＆メイクカルテ' : 'ファッション提案',
                 "お名前": userName,
                 "ご年代": userAge,
                 "メールアドレス": userEmail,
                 "金額": price,
-                "お悩み・ご要望": notes + (impression ? ` (印象希望: ${impression})` : ''),
                 service_type: selectedMenu,
                 name: userName,
                 age: userAge,
                 email: userEmail,
-                price: price,
-                notes: notes
+                price: price
             };
 
-            try {
-                if (GAS_WEBHOOK_URL) {
-                    await fetch(GAS_WEBHOOK_URL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                }
-            } catch (err) {
-                console.error('Transmission error:', err);
+            // バックグラウンドでGASへ通知送信
+            if (GAS_WEBHOOK_URL) {
+                fetch(GAS_WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).catch(err => console.error('Transmission error:', err));
             }
 
             // LINE送信用の入力内容テキストを生成
-            latestOrderSummary = `【NaNala style 申し込み内容】\n`
+            latestOrderSummary = `【NaNala 申し込み内容】\n`
                 + `・お名前：${userName} 様\n`
                 + `・ご年代：${userAge}\n`
                 + `・メールアドレス：${userEmail}\n`
-                + `・ご希望メニュー：${selectedMenu}\n`
-                + `・金額：${price}（税込）`
-                + (selectedMenu === '顔診断' && impression ? `\n・なりたい印象：${impression}` : '')
-                + (selectedMenu === '顔診断' && notes ? `\n・お悩み：${notes}` : '');
+                + `・ご希望メニュー：${selectedMenu === '顔診断' ? '顔分析診断＆メイクカルテ' : 'ファッション提案'}\n`
+                + `・金額：${price}（税込）`;
 
             const guideBox = document.getElementById('payment-guide-box');
             guideBox.innerHTML = `
@@ -760,12 +722,13 @@ ${latestOrderSummary}
                 </div>
 
                 <!-- コピーボタン -->
-                <button type="button" id="copyBtn" onclick="copyOrderDetails()" class="w-full bg-rose-500 hover:bg-rose-600 active:bg-rose-700 text-white font-bold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow">
+                <button type="button" id="copyBtn" onclick="copyOrderDetails()" class="w-full bg-rose-500 hover:bg-rose-600 active:bg-rose-700 text-white font-bold py-3.5 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow cursor-pointer select-none">
                     <i data-lucide="copy" class="w-4 h-4"></i>
                     <span id="copyBtnText">入力内容をコピーする</span>
                 </button>
             `;
 
+            // ステップ3へ遷移
             document.getElementById('step2-content').classList.add('hidden');
             document.getElementById('step3-content').classList.remove('hidden');
 
@@ -806,7 +769,7 @@ ${latestOrderSummary}
             }
         }
 
-        // モーダル操作
+        // モーダル画像拡大操作
         function openModal(src) {
             const modal = document.getElementById('imageModal');
             const img = document.getElementById('modalImg');
