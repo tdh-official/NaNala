@@ -268,10 +268,6 @@
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <i data-lucide="check" class="w-4 h-4 text-rose-500 shrink-0 mt-1"></i>
-                                    <span>アクセサリーの提案</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-rose-500 shrink-0 mt-1"></i>
                                     <span>PDFカルテを納品</span>
                                 </li>
                             </ul>
@@ -299,7 +295,7 @@
                         <div class="w-10 h-10 rounded-full bg-rose-500 text-white font-serif font-bold text-lg flex items-center justify-center shrink-0">1</div>
                         <div class="space-y-1">
                             <h3 class="text-lg font-bold text-sand-900">フォームよりお申し込み・決済</h3>
-                            <p class="text-sm text-sand-800">下記の専用フォームより希望メニュー・情報を入力。PayPay銀行へ振込をお願いします。</p>
+                            <p class="text-sm text-sand-800">下記の専用フォームより希望メニュー・情報を入力。公式LINEにて振込口座をご案内いたします。</p>
                         </div>
                     </div>
 
@@ -457,16 +453,6 @@
                                 <input type="email" id="userEmail" required placeholder="例：example@email.com" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm">
                             </div>
 
-                            <!-- 5-A: ファッション提案分岐 -->
-                            <div id="fashion-fields" class="space-y-4">
-                                <div>
-                                    <label for="fashionNotes" class="block text-sm font-bold text-sand-900 mb-1">
-                                        お洋服のお悩みや好み（任意）
-                                    </label>
-                                    <textarea id="fashionNotes" rows="3" placeholder="体型カバーがしたい、パンツスタイルが好き、よく着る色など" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-rose-400 transition text-sm"></textarea>
-                                </div>
-                            </div>
-
                             <!-- 5-B: 顔診断分岐 -->
                             <div id="face-fields" class="space-y-4 hidden">
                                 <div>
@@ -509,12 +495,12 @@
                                     お支払い方法 <span class="text-rose-500">*</span>
                                 </label>
                                 <div class="p-4 rounded-2xl border-2 border-rose-500 bg-rose-50/50 flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
-                                        <i data-lucide="landmark" class="w-5 h-5"></i>
+                                    <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0">
+                                        <i data-lucide="wallet" class="w-5 h-5"></i>
                                     </div>
                                     <div>
-                                        <p class="font-bold text-sm text-sand-900">PayPay銀行（口座振込）</p>
-                                        <p class="text-xs text-sand-800">振込先口座情報を次画面でご案内いたします。</p>
+                                        <p class="font-bold text-sm text-sand-900">銀行振込</p>
+                                        <p class="text-xs text-sand-800">お申し込み完了後、公式LINEにて振込口座をご案内いたします。</p>
                                     </div>
                                 </div>
                             </div>
@@ -536,9 +522,9 @@
                             </div>
 
                             <h3 class="text-2xl font-bold text-sand-900">お申し込みを受け付けました</h3>
-                            <p class="text-sm text-sand-800">内容を受信いたしました。振込完了後、公式LINEへご連絡ください。</p>
+                            <p class="text-sm text-sand-800">お申し込みありがとうございます。下記の手順に沿って公式LINEへご連絡ください。</p>
 
-                            <!-- 口座振込案内 -->
+                            <!-- 入力内容コピー＆振込口座案内ボックス -->
                             <div id="payment-guide-box" class="p-6 rounded-2xl bg-sand-50 border border-sand-200 text-left space-y-4">
                             </div>
 
@@ -549,8 +535,8 @@
                                         LINE
                                     </div>
                                     <div>
-                                        <p class="font-bold text-sm text-green-900">【必須】お写真送信・連絡用公式LINE</p>
-                                        <p class="text-xs text-green-800 mt-0.5">お振込完了後、下記LINEに「お名前」または「お申し込み完了」とメッセージをお送りください。</p>
+                                        <p class="font-bold text-sm text-green-900">【必須】公式LINEへ送信</p>
+                                        <p class="text-xs text-green-800 mt-0.5">LINE追加後、先程コピーした内容をそのままメッセージ送信してください。確認後、振込口座をご案内します。</p>
                                     </div>
                                 </div>
                                 
@@ -633,9 +619,43 @@
 
         // Google Apps Script Webhook URL (yukana130707@gmail.com への通知用)
         const GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyofqOsl9qZ3w8b3t333P9f0N4Bv-yPj109wJ9P6eYQ2f_E9M_D77A-l6-vCg1XyY_1/exec';
+        let latestOrderSummary = '';
 
         // フォーム切り替え
         function toggleFormFields() {
+            const selectedMenu = document.querySelector('input[name="service_type"]:checked').value;
+            const faceFields = document.getElementById('face-fields');
+            if (faceFields) {
+                if (selectedMenu === '顔診断') {
+                    faceFields.classList.remove('hidden');
+                } else {
+                    faceFields.classList.add('hidden');
+                }
+            }
+        }
+
+        function selectMenu(type) {
+            if (type === 'face') {
+                document.querySelector('input[name="service_type"][value="顔診断"]').checked = true;
+            } else {
+                document.querySelector('input[name="service_type"][value="ファッション提案"]').checked = true;
+            }
+            toggleFormFields();
+        }
+
+        function goToStep2() {
+            const userName = document.getElementById('userName').value.trim();
+            const userAge = document.getElementById('userAge').value;
+            const userEmail = document.getElementById('userEmail').value.trim();
+            const msgBox = document.getElementById('validation-msg');
+
+            if (!userName || !userAge || !userEmail) {
+                msgBox.textContent = 'お名前、年齢、メールアドレスをすべてご入力ください。';
+                msgBox.classList.remove('hidden');
+                return;
+            }
+            msgBox.classList.add('hidden');
+
             const selectedMenu = document.querySelector('input[name="service_type"]:checked').value;
             document.getElementById('summaryMenu').innerText = selectedMenu === '顔診断' ? '顔分析診断＆メイクカルテコース' : 'ファッション提案';
             document.getElementById('summaryPrice').innerText = selectedMenu === '顔診断' ? '特別価格 ¥24,800（税込）' : '特別価格 ¥13,200（税込）';
@@ -681,8 +701,9 @@
             const userName = document.getElementById('userName').value.trim();
             const userAge = document.getElementById('userAge').value;
             const userEmail = document.getElementById('userEmail').value.trim();
-            const notes = selectedMenu === '顔診断' ? document.getElementById('faceNotes').value.trim() : document.getElementById('fashionNotes').value.trim();
-            const impression = selectedMenu === '顔診断' ? document.getElementById('faceImpression').value : '';
+            const faceNotesEl = document.getElementById('faceNotes');
+            const notes = selectedMenu === '顔診断' && faceNotesEl ? faceNotesEl.value.trim() : '';
+            const impression = selectedMenu === '顔診断' && document.getElementById('faceImpression') ? document.getElementById('faceImpression').value : '';
             const price = selectedMenu === '顔診断' ? '¥24,800' : '¥13,200';
 
             const payload = {
@@ -713,21 +734,36 @@
                 console.error('Transmission error:', err);
             }
 
+            // LINE送信用の入力内容テキストを生成
+            latestOrderSummary = `【NaNala style 申し込み内容】\n`
+                + `・お名前：${userName} 様\n`
+                + `・ご年代：${userAge}\n`
+                + `・メールアドレス：${userEmail}\n`
+                + `・ご希望メニュー：${selectedMenu}\n`
+                + `・金額：${price}（税込）`
+                + (selectedMenu === '顔診断' && impression ? `\n・なりたい印象：${impression}` : '')
+                + (selectedMenu === '顔診断' && notes ? `\n・お悩み：${notes}` : '');
+
             const guideBox = document.getElementById('payment-guide-box');
             guideBox.innerHTML = `
-                <div class="border-b border-sand-200 pb-3 mb-3">
-                    <span class="inline-block px-2.5 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-md mb-1">振込先情報</span>
-                    <h4 class="font-bold text-sand-900 text-base">PayPay銀行へのお振込</h4>
+                <div class="border-b border-sand-200 pb-3 mb-2">
+                    <span class="inline-block px-2.5 py-1 bg-rose-100 text-rose-700 text-xs font-bold rounded-md mb-1">次のステップ</span>
+                    <h4 class="font-bold text-sand-900 text-base">お申し込み内容の送信と口座のご案内</h4>
                 </div>
-                <div class="space-y-1.5 text-xs sm:text-sm text-sand-800">
-                    <p><span class="font-semibold text-sand-900">金融機関名：</span>PayPay銀行（0033）</p>
-                    <p><span class="font-semibold text-sand-900">本店支店名：</span>ビジネス営業部（001）</p>
-                    <p><span class="font-semibold text-sand-900">口座種別：</span>普通預金</p>
-                    <p><span class="font-semibold text-sand-900">口座番号：</span>1234567</p>
-                    <p><span class="font-semibold text-sand-900">口座名義：</span>ナナラスタイル</p>
-                    <p><span class="font-semibold text-sand-900">振込金額：</span><strong class="text-rose-500">${price}</strong></p>
+                <p class="text-xs sm:text-sm text-sand-800 leading-relaxed">
+                    下記ボタンより先程入力した内容をコピーし、公式LINEを追加後、メッセージとして送信してください。確認後、振込口座をご案内いたします。
+                </p>
+
+                <!-- コピープレビュー枠 -->
+                <div class="p-3 bg-white rounded-xl border border-sand-200 text-xs text-sand-800 font-mono whitespace-pre-wrap select-all">
+${latestOrderSummary}
                 </div>
-                <p class="text-xs text-rose-500 mt-2">※お振込名義は「${userName}」様のお名前でお振込みをお願いいたします。</p>
+
+                <!-- コピーボタン -->
+                <button type="button" id="copyBtn" onclick="copyOrderDetails()" class="w-full bg-rose-500 hover:bg-rose-600 active:bg-rose-700 text-white font-bold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                    <span id="copyBtnText">入力内容をコピーする</span>
+                </button>
             `;
 
             document.getElementById('step2-content').classList.add('hidden');
@@ -740,6 +776,34 @@
 
             lucide.createIcons();
             document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 入力内容のクリップボードコピー処理
+        function copyOrderDetails() {
+            if (!latestOrderSummary) return;
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = latestOrderSummary;
+            tempInput.setAttribute('readonly', '');
+            tempInput.style.position = 'absolute';
+            tempInput.style.left = '-9999px';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const copyBtn = document.getElementById('copyBtn');
+            const copyBtnText = document.getElementById('copyBtnText');
+            if (copyBtn && copyBtnText) {
+                copyBtn.classList.remove('bg-rose-500', 'hover:bg-rose-600');
+                copyBtn.classList.add('bg-emerald-600', 'hover:bg-emerald-700');
+                copyBtnText.innerHTML = 'コピーしました！そのままLINEへ貼り付けてください';
+                setTimeout(() => {
+                    copyBtn.classList.remove('bg-emerald-600', 'hover:bg-emerald-700');
+                    copyBtn.classList.add('bg-rose-500', 'hover:bg-rose-600');
+                    copyBtnText.innerText = '入力内容をコピーする';
+                }, 3000);
+            }
         }
 
         // モーダル操作
