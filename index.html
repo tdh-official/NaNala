@@ -112,10 +112,8 @@
                     <div class="relative">
                         <div class="relative mx-auto max-w-xs sm:max-w-sm bg-white p-2.5 rounded-3xl shadow-2xl border border-rose-100">
                             <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-sand-100 group">
-                                <!-- 指定された IMG_6937.jpeg をメインに設定 -->
-                                <img id="heroImage" src="IMG_6937.jpeg" alt="ファッションスタイリング風景" class="w-full h-full object-cover object-bottom transition-all duration-300">
+                                <img id="heroImage" src="https://raw.githubusercontent.com/tdh-official/NaNala/af751675c2f570ed7256b70ba76334bea6e4d126/IMG_6937.jpeg" onerror="if(!this.dataset.retried){this.dataset.retried='true';this.src='IMG_6937.jpeg';}" alt="ファッションスタイリング風景" class="w-full h-full object-cover object-bottom transition-all duration-300">
                                 
-                                <!-- プレビュー画面でいつでも画像を差し替え・固定できるボタン -->
                                 <label class="absolute top-3 right-3 bg-white/90 hover:bg-white text-sand-900 text-xs font-bold py-1.5 px-3 rounded-full shadow-md cursor-pointer border border-rose-200 flex items-center gap-1.5 transition backdrop-blur-sm opacity-80 hover:opacity-100">
                                     <i data-lucide="camera" class="w-3.5 h-3.5 text-rose-500"></i>
                                     <span>写真を反映</span>
@@ -125,10 +123,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- お悩みチェックセクション ＋ ギャラリー -->
             </div>
         </section>
 
@@ -166,6 +160,44 @@
                     <p class="text-sand-800 text-sm mt-2">
                         顔診断で自身の魅力を正しく把握すれば、無駄な買い物が減り、自信を持って垢抜けることができます。
                     </p>
+                </div>
+
+                <!-- フォトギャラリー（コンパクトカード配置） -->
+                <div class="mt-12">
+                    <div class="text-center mb-6">
+                        <span class="text-xs font-bold tracking-widest text-rose-500 uppercase">Analysis & Support</span>
+                        <p class="text-base sm:text-lg font-bold text-sand-900 mt-0.5">丁寧な個別分析と7daysコーデ提案イメージ</p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                        <!-- 写真1：顔分析シーン -->
+                        <div class="group bg-sand-50 p-3 rounded-2xl border border-sand-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="openModal('IMG_6927.JPG')">
+                            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-sand-100 relative">
+                                <img src="IMG_6927.JPG" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80';" alt="顔分析・カルテ作成シーン" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                                <div class="absolute inset-0 bg-sand-900/10 group-hover:bg-sand-900/0 transition"></div>
+                                <div class="absolute bottom-2 right-2 px-2.5 py-1 bg-black/60 backdrop-blur-sm text-white text-[11px] rounded-full flex items-center gap-1">
+                                    <i data-lucide="zoom-in" class="w-3 h-3"></i>
+                                    <span>拡大</span>
+                                </div>
+                            </div>
+                            <p class="text-xs font-bold text-sand-900 text-center mt-2.5">デジタルカルテでの精密顔分析</p>
+                            <p class="text-[11px] text-sand-800 text-center mt-0.5">パーツバランスと骨格を丁寧に数値化</p>
+                        </div>
+
+                        <!-- 写真2：手持ち服で叶える！垢抜け7days 紹介 -->
+                        <div class="group bg-sand-50 p-3 rounded-2xl border border-sand-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="openModal('IMG_6916.jpg')">
+                            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-sand-100 relative">
+                                <img src="IMG_6916.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80';" alt="手持ち服で叶える！垢抜け7days" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                                <div class="absolute inset-0 bg-sand-900/10 group-hover:bg-sand-900/0 transition"></div>
+                                <div class="absolute bottom-2 right-2 px-2.5 py-1 bg-black/60 backdrop-blur-sm text-white text-[11px] rounded-full flex items-center gap-1">
+                                    <i data-lucide="zoom-in" class="w-3 h-3"></i>
+                                    <span>拡大</span>
+                                </div>
+                            </div>
+                            <p class="text-xs font-bold text-sand-900 text-center mt-2.5">手持ち服で叶える！垢抜け7days</p>
+                            <p class="text-[11px] text-sand-800 text-center mt-0.5">着回しと買い足しアイテムで即垢抜け</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -549,7 +581,7 @@
                                 <!-- JSで動的差し替え -->
                             </div>
 
-                            <!-- 2. 公式LINEへの送信カード（写真提出・連絡のメイン導線） -->
+                            <!-- 2. 公式LINEへの送信カード -->
                             <div class="p-5 sm:p-6 rounded-2xl bg-emerald-50 border-2 border-emerald-400 text-left space-y-3 shadow-sm">
                                 <div class="flex items-center gap-2 text-emerald-800 font-bold text-base">
                                     <div class="w-7 h-7 bg-emerald-500 text-white rounded-full flex items-center justify-center shrink-0 text-xs font-bold">LINE</div>
@@ -596,7 +628,7 @@
                             写真の提出はどのような写真が必要ですか？
                         </p>
                         <p class="text-xs sm:text-sm text-sand-800 mt-2 pl-5 leading-relaxed">
-                            正面を向いたノーメイク（またはナチュラルメイク）のお顔写真1枚と、全身の雰囲気がわかる写真を1〜2枚お送りいただきます。撮影方法のガイドもLINEにてお渡しします。
+                            正面を向いたノーメイク（またはナチュラルメイク）のお顔写真1枚と、手持ちアイテムの写真をお送りいただきます。撮影方法のガイドもLINEにてお渡しします。
                         </p>
                     </div>
 
@@ -624,6 +656,16 @@
         </section>
     </main>
 
+    <!-- モーダル（拡大画像ビューアー） -->
+    <div id="imageModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-200" onclick="closeModal()">
+        <div class="relative max-w-2xl w-full max-h-[90vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+            <button type="button" onclick="closeModal()" class="absolute -top-12 right-0 text-white hover:text-rose-200 p-2 rounded-full">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            <img id="modalImg" src="" alt="拡大画像" class="max-h-[85vh] w-auto max-w-full rounded-2xl shadow-2xl object-contain bg-white">
+        </div>
+    </div>
+
     <!-- フッター -->
     <footer class="bg-sand-900 text-white py-10 border-t border-sand-800">
         <div class="max-w-6xl mx-auto px-4 text-center space-y-4">
@@ -645,7 +687,7 @@
             }
         });
 
-        // ヒーロー画像を選択・ローカル保存してリロードしても戻らないようにする関数
+        // ヒーロー画像を選択・ローカル保存
         function updateHeroImage(event) {
             const file = event.target.files[0];
             if (file) {
@@ -654,7 +696,6 @@
                     const heroImg = document.getElementById('heroImage');
                     if (heroImg) {
                         heroImg.src = e.target.result;
-                        // ブラウザに保存して再読み込み時も維持
                         localStorage.setItem('nanala_hero_image', e.target.result);
                     }
                 };
@@ -664,6 +705,21 @@
 
         // Google Apps Script Webhook URL
         const GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyofqOsl9qZ3w8b3t333P9f0N4Bv-yPj109wJ9P6eYQ2f_E9M_D77A-l6-vCg1XyY_1/exec';
+
+        // フォーム項目の表示切り替え
+        function toggleFormFields() {
+            const selectedMenu = document.querySelector('input[name="service_type"]:checked').value;
+            const faceFields = document.getElementById('face-fields');
+            const fashionFields = document.getElementById('fashion-fields');
+
+            if (selectedMenu === '顔診断') {
+                faceFields.classList.remove('hidden');
+                fashionFields.classList.add('hidden');
+            } else {
+                faceFields.classList.add('hidden');
+                fashionFields.classList.remove('hidden');
+            }
+        }
 
         // メニュー一覧ボタンから選択時
         function selectMenu(type) {
@@ -752,55 +808,50 @@
             submitBtn.disabled = true;
             submitBtnText.innerText = '送信中...';
             submitBtnIcon.setAttribute('data-lucide', 'loader-2');
-            submitBtnIcon.classList.add('animate-spin');
             lucide.createIcons();
 
             const selectedMenu = document.querySelector('input[name="service_type"]:checked').value;
             const userName = document.getElementById('userName').value.trim();
             const userAge = document.getElementById('userAge').value;
             const userEmail = document.getElementById('userEmail').value.trim();
+            const notes = selectedMenu === '顔診断' 
+                ? document.getElementById('faceNotes').value.trim() 
+                : document.getElementById('fashionNotes').value.trim();
+            const impression = selectedMenu === '顔診断' 
+                ? document.getElementById('faceImpression').value 
+                : '';
             const price = selectedMenu === '顔診断' ? '¥24,800' : '¥13,200';
-            
-            const detailText = selectedMenu === '顔診断'
-                ? `【希望印象】: ${document.getElementById('faceImpression').value}\n【悩み】: ${document.getElementById('faceNotes').value || 'なし'}`
-                : `【お洋服のお悩みや好み】: ${document.getElementById('fashionNotes').value || 'なし'}`;
 
-            // =========================================================================
-            // 【重要】Google Apps Scriptで発行したウェブアプリURLをここに貼り付けてください
-            // 手順は「email_setup_guide.md」をご確認ください。URL未設定時でもLINE連携は正常に動作します。
-            // =========================================================================
-            const GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyoXFAK64z4Wmz_dNgHRLXGBGo-B-rA895UasHCrJsENt20iuYEnU7Mr2w5w6pACuAQyw/exec'; 
+            const payload = {
+                "お名前": userName,
+                "ご年代": userAge,
+                "メールアドレス": userEmail,
+                "ご希望メニュー": selectedMenu,
+                "金額": `${price}（税込）`,
+                "お悩み・ご要望": impression ? `【希望印象】${impression}\n【お悩み】${notes}` : notes,
+                service_type: selectedMenu,
+                name: userName,
+                age: userAge,
+                email: userEmail,
+                price: `${price}（税込）`,
+                notes: notes
+            };
 
-            if (GAS_WEBHOOK_URL) {
-                try {
+            // GASへデータ送信
+            try {
+                if (GAS_WEBHOOK_URL) {
                     await fetch(GAS_WEBHOOK_URL, {
                         method: 'POST',
                         mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            "お名前": userName,
-                            "ご年代": userAge,
-                            "メールアドレス": userEmail,
-                            "ご希望メニュー": selectedMenu,
-                            "金額": `${price}（税込）`,
-                            "お悩み・ご要望": detailText
-                        })
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
                     });
-                } catch (err) {
-                    console.warn('GAS送信エラー:', err);
                 }
+            } catch (err) {
+                console.error('Transmission error:', err);
             }
 
-            // 2. LINE送信用メッセージ準備（トーク画面に直接セット）
-            const lineSummary = `【NaNala Style 診断お申し込み】\n・お名前: ${userName}様\n・ご年代: ${userAge}\n・メール: ${userEmail}\n・希望メニュー: ${selectedMenu}（${price} 税込）\n${detailText}\n\n振込手配を進めます。よろしくお願いいたします！`;
-            document.getElementById('copyBuffer').value = lineSummary;
-
-            const lineMessageUrl = `https://line.me/R/oaMessage/%40617jajsy/?${encodeURIComponent(lineSummary)}`;
-            document.getElementById('lineSubmitBtn').href = lineMessageUrl;
-
-            // 3. 振込先案内カードの差し替え
+            // 口座情報の差し替え
             const guideBox = document.getElementById('payment-guide-box');
             guideBox.innerHTML = `
                 <div class="border-b border-sand-200 pb-2.5 mb-2.5">
@@ -818,6 +869,10 @@
                 </div>
                 <p class="text-xs text-rose-600 mt-2 bg-rose-50 p-2 rounded-lg">※お振込名義は「${userName}」様のお名前でお手続きをお願いいたします。</p>
             `;
+
+            // コピーバッファにLINE送信用のテキストを用意
+            const copyBuffer = document.getElementById('copyBuffer');
+            copyBuffer.value = `【お申し込み内容】\nお名前：${userName}様\nご年代：${userAge}\nメニュー：${selectedMenu}（${price}）\nメールアドレス：${userEmail}\nご要望・お悩み：${notes || '特になし'}`;
 
             // ステップ3（完了画面）を表示
             document.getElementById('step2-content').classList.add('hidden');
@@ -851,6 +906,25 @@
             setTimeout(() => {
                 copyBtnText.innerText = 'お申し込み内容をコピー';
             }, 3000);
+        }
+
+        // モーダル操作
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('modalImg');
+            if (modal && img) {
+                img.src = src;
+                modal.classList.remove('hidden');
+                setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            if (modal) {
+                modal.classList.add('opacity-0');
+                setTimeout(() => { modal.classList.add('hidden'); }, 200);
+            }
         }
     </script>
 </body>
